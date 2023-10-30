@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object with methods - exercise</title>
+</head>
+<body>
+    
+    <script>
+        const school = {
+            name: "Einstein High School",
+            town: "Las Vegas",
+            students: [],
+            addStudent(name, surname) {
+                let index = this.students.length;
+                let obj = {
+                    name: name,
+                    surname: surname
+                }
+                this.students[index] = obj;
+            },
+            showStudents: function() {
+                let index = this.students.length;
+                if (index == 0) {
+                    console.log("No students in school");
+                    console.log(" ");
+                } else {
+                    console.log("List of students");
+                    for (let i = 0; i < index; i++) {
+                        let student = this.students[i];
+                        console.log((i+1) + " " + student.name + " " + student.surname);
+                    };
+                    console.log(" ");
+                }
+            },
+            showStudentsByName: function(name) {
+                console.log("List of students with name ", name);
+                let index = this.students.length;
+                for (let i = 0; i < index; i++) {
+                    let student = this.students[i];
+                    if (student.name == name) {
+                        console.log((i+1) + " " + student.name + " " + student.surname);
+                    }
+                }
+                console.log(" ");
+            },
+            getNumStudents() {
+                console.log("Number of Students:" + " " + this.students.length);
+                console.log(" ");
+            },
+            resetStudents() {
+                this.students = [];
+                console.log("List of students has been reset");
+                console.log(" ");
+            },
+        }
+
+        // tests
+
+        school.showStudents();
+
+        let stud001 = school.addStudent("Mike", "Selbow");
+        let stud002 = school.addStudent("Alice", "Brown");
+        let stud003 = school.addStudent("Steven", "Stone");
+        let stud004 = school.addStudent("Alice", "Rives");
+        let stud005 = school.addStudent("Mark", "Alice");
+
+        school.showStudents();
+
+        school.showStudentsByName("Alice");
+
+        school.getNumStudents();
+
+        school.resetStudents();
+
+        school.showStudents();
+    </script>
+</body>
+</html>
